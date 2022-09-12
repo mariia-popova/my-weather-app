@@ -21,18 +21,24 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="src/styles.css" />
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="conteiner">
       <h1>Paris</h1>
       <img class="top-image" src="images/sun.svg" alt="sun" />
       <h2>
-       <span id="currentTemperature">+28</span>  <span class="units"> <a href="#" class="celsFahren celsFahrenActive"  id="celsius"> ºC </a><span> | </span class="units"> <a href="#" class="celsFahren" id="fahrenheit"> ºF </a></span>
+        <span id="currentTemperature">+28</span>
+        <span class="units">
+          <a href="#" class="celsFahren celsFahrenActive" id="celsius"> ºC </a>
+        </span>
+        <span> | </span>
+        <span class="units">
+          <a href="#" class="celsFahren" id="fahrenheit"> ºF </a>
+        </span>
       </h2>
       <p class="dayTime" id="dayOfWeek">Thursday 10:47</p>
-      <p class ="description">Sunny</p>
+      <p class="description">Sunny</p>
       <br />
       <form>
         <input
@@ -42,9 +48,9 @@
           placeholder="Enter the city"
         />
         <input class="button-search" id="button" type="Submit" value="Search" />
-         <button>Current</button>
+        <button>Current</button>
       </form>
-     
+
       <br />
       <div class="row gx-1 weather-table">
         <div class="col">
@@ -73,6 +79,17 @@
           <div class="degrees">26º/16º</div>
         </div>
       </div>
+      <br />
+      <p class="footer">
+        <a
+          href="https://github.com/mariia-popova/my-weather-app"
+          class="footerLink"
+          target="_blank"
+        >
+          Open source code
+        </a>
+        by Mariia Popova 💁🏼‍♀️ 👩🏼‍💻
+      </p>
     </div>
     <script src="src/index.js"></script>
     <script
