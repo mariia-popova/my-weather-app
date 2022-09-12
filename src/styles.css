@@ -1,0 +1,100 @@
+.conteiner {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 60px 20px;
+  border-radius: 10px;
+  background-image: url("../images/forest.jpg");
+  background-color: #00000050;
+  background-blend-mode: normal;
+  background-position: bottom;
+
+  position: relative;
+  font-family: "Roboto", sans-serif;
+}
+h1,
+h2,
+p,
+.days,
+.degrees {
+  color: #fff;
+  font-weight: 500px;
+}
+.dayTime {
+  margin-bottom: 0;
+}
+
+h1 {
+  display: block;
+  margin: 50px 0 20px 0px;
+}
+button {
+  display: inline-block;
+  padding: 5px 8px;
+  border: none;
+  border-radius: 5px;
+  color: #eb8439;
+  background-color: #fff;
+  cursor: pointer;
+  transition: 150ms ease-in-out;
+}
+button:hover {
+  color: #fff;
+  background-color: #eb8439;
+  cursor: pointer;
+  transition: 150ms ease-in-out;
+}
+.units {
+  font-weight: 300;
+}
+.celsFahren {
+  text-decoration: none;
+  color: #fff;
+}
+.celsFahren:hover {
+  color: #eb8439;
+  cursor: pointer;
+  transition: 150ms ease-in-out;
+}
+.celsFahrenActive {
+  color: #eb8439;
+}
+.enter-city,
+.button-search {
+  border: none;
+  padding: 5px 8px;
+  box-shadow: 5px 5px 5px rgb(53, 63, 52);
+}
+.enter-city {
+  border-radius: 5px 0 0 5px;
+  outline: none;
+}
+
+.button-search {
+  background-color: #eb8439;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+}
+.button-search:hover {
+  background-color: #fff;
+  color: #eb8439;
+  transition: 200ms ease-in-out;
+}
+.top-image {
+  color: #fcdc74;
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  width: 150px;
+  height: 150px;
+}
+.days,
+.degrees {
+  text-align: center;
+}
+.bottom-images {
+  display: block;
+  margin: 0 auto;
+}
+.weather-table {
+  line-height: 40px;
+}
