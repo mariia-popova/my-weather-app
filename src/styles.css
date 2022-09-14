@@ -27,7 +27,7 @@ h1 {
   display: block;
   margin: 50px 0 20px 0px;
 }
-button {
+#current-button {
   display: inline-block;
   padding: 5px 8px;
   border: none;
@@ -82,7 +82,7 @@ button:hover {
 .top-image {
   color: #fcdc74;
   position: absolute;
-  right: 30px;
+  right: 20px;
   top: 30px;
   width: 150px;
   height: 150px;

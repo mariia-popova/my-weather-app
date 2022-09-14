@@ -1,3 +1,8 @@
+let apiKey = "6932b3c494b1a744dfaf6ee7c867c8fe";
+let apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric";
+
+axios.get(`${apiUrl}&appid=${apiKey}&q=Kyiv`).then(setWeather);
+
 let now = new Date();
 let hours = now.getHours();
 let minutes = String(now.getMinutes()).padStart(2, "0");
@@ -16,17 +21,7 @@ let day = days[now.getDay()];
 let nameDay = document.querySelector("#dayOfWeek");
 nameDay.innerHTML = `${day} ${hours}:${minutes}`;
 
-function enterCity(event) {
-  event.preventDefault();
-  let cityInput = document.querySelector("#cityEnter");
-  let heading = document.querySelector("h1");
-  heading.innerHTML = `${cityInput.value}`;
-}
-
-let button = document.querySelector("#button");
-button.addEventListener("click", enterCity);
-
-function temperatureFahrenheit() {
+function convertToFahrenheit() {
   let temperature = document.querySelector("#currentTemperature");
   temperature.innerHTML = `+77`;
   let fahrenheit = document.querySelector("#fahrenheit");
@@ -36,9 +31,9 @@ function temperatureFahrenheit() {
 }
 
 let fahrenheit = document.querySelector("#fahrenheit");
-fahrenheit.addEventListener("click", temperatureFahrenheit);
+fahrenheit.addEventListener("click", convertToFahrenheit);
 
-function temperatureCelsius() {
+function convertToCelsius() {
   let temperature = document.querySelector("#currentTemperature");
   temperature.innerHTML = `+28`;
   let fahrenheit = document.querySelector("#fahrenheit");
@@ -48,19 +43,13 @@ function temperatureCelsius() {
 }
 
 let celsius = document.querySelector("#celsius");
-celsius.addEventListener("click", temperatureCelsius);
+celsius.addEventListener("click", convertToCelsius);
 
-let apiKey = "6932b3c494b1a744dfaf6ee7c867c8fe";
-let apiUrl = "https://api.openweathermap.org/data/2.5/weather?&units=metric";
-let lat = 0;
-let lon = 0;
-
-function myPosition(position) {
-  lat = position.coords.latitude;
-  lon = position.coords.longitude;
+function getWeatherByPosition(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  axios.get(`${apiUrl}&appid=${apiKey}&lat=${lat}&lon=${lon}`).then(setWeather);
 }
-
-navigator.geolocation.getCurrentPosition(myPosition);
 
 function setWeather(response) {
   console.log(response);
@@ -77,17 +66,19 @@ function setWeather(response) {
 }
 
 function getCurrentWeather() {
-  axios.get(`${apiUrl}&appid=${apiKey}&lat=${lat}&lon=${lon}`).then(setWeather);
+  navigator.geolocation.getCurrentPosition(getWeatherByPosition);
 }
 
-let buttonCurrent = document.querySelector("button");
+let buttonCurrent = document.querySelector("#current-button");
 buttonCurrent.addEventListener("click", getCurrentWeather);
 
-function searchWeather() {
+function searchWeather(event) {
+  event.preventDefault();
   let cityInput = document.querySelector("#cityEnter");
 
   axios.get(`${apiUrl}&appid=${apiKey}&q=${cityInput.value}`).then(setWeather);
+  cityInput.value = "";
 }
 
-let searchButton = document.querySelector("#button");
+let searchButton = document.querySelector("#search-button");
 searchButton.addEventListener("click", searchWeather);

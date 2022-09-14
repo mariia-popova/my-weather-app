@@ -26,16 +26,16 @@
   </head>
   <body>
     <div class="conteiner">
-      <h1>Paris</h1>
+      <h1></h1>
       <img class="top-image" src="images/sun.svg" alt="sun" />
       <h2>
-        <span id="currentTemperature">+28</span>
+        <span id="currentTemperature"></span>
         <span class="units">
-          <a href="#" class="celsFahren celsFahrenActive" id="celsius"> ºC </a>
+          <span class="celsFahren celsFahrenActive" id="celsius"> ºC </span>
         </span>
         <span> | </span>
         <span class="units">
-          <a href="#" class="celsFahren" id="fahrenheit"> ºF </a>
+          <span class="celsFahren" id="fahrenheit"> ºF </span>
         </span>
       </h2>
       <p class="dayTime" id="dayOfWeek">Thursday 10:47</p>
@@ -48,8 +48,13 @@
           type="text"
           placeholder="Enter the city"
         />
-        <input class="button-search" id="button" type="Submit" value="Search" />
-        <button>Current</button>
+        <input
+          class="button-search"
+          id="search-button"
+          type="Submit"
+          value="Search"
+        />
+        <button id="current-button">Current</button>
       </form>
 
       <br />
