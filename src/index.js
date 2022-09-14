@@ -65,7 +65,8 @@ function setWeather(response) {
   city.innerHTML = `${currentCity}`;
 }
 
-function getCurrentWeather() {
+function getCurrentWeather(event) {
+  event.preventDefault();
   navigator.geolocation.getCurrentPosition(getWeatherByPosition);
 }
 
