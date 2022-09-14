@@ -98,12 +98,15 @@ button:hover {
 .weather-table {
   line-height: 40px;
 }
+
 .footer {
+  max-width: 400px;
+  margin: 10px auto;
   font-size: 15px;
 }
 .footerLink {
   text-decoration: underline;
-  color: #fff;
+  color: #eb8439;
   font-size: 15px;
 }
 .footerLink:hover {
