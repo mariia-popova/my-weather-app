@@ -82,10 +82,10 @@ button:hover {
 .top-image {
   color: #fcdc74;
   position: absolute;
-  right: 20px;
-  top: 30px;
-  width: 150px;
-  height: 150px;
+  right: 30px;
+  top: 40px;
+  width: 120px;
+  height: 120px;
 }
 .days,
 .degrees {

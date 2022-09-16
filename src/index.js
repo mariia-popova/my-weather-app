@@ -1,3 +1,7 @@
+//let iconMap = {
+// "01d": "images/sun.svg",
+//"02d": ""
+
 let apiKey = "6932b3c494b1a744dfaf6ee7c867c8fe";
 let apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric";
 
@@ -57,9 +61,12 @@ function setWeather(response) {
   let tempRounded = Math.round(temperature);
   let currentCity = response.data.name;
   let description = response.data.weather[0].main;
+  let topIcon = response.data.weather[0].icon;
   let weather = document.querySelector(".description");
   let city = document.querySelector("h1");
   let currentTemp = document.querySelector("#currentTemperature");
+  let iconElement = document.querySelector(".top-image");
+  iconElement.setAttribute("src", `images/${topIcon}.png`);
   weather.innerHTML = `${description}`;
   currentTemp.innerHTML = `${tempRounded}`;
   city.innerHTML = `${currentCity}`;
