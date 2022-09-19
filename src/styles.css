@@ -15,17 +15,20 @@ h1,
 h2,
 p,
 .days,
-.degrees {
+.degrees,
+.windSpeed {
   color: #fff;
   font-weight: 500px;
-}
-.dayTime {
-  margin-bottom: 0;
 }
 
 h1 {
   display: block;
   margin: 50px 0 20px 0px;
+}
+.dayTime,
+.windSpeed,
+.description {
+  margin-bottom: 0;
 }
 #current-button {
   display: inline-block;

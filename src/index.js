@@ -59,10 +59,12 @@ function setWeather(response) {
   let tempRounded = Math.round(temperature);
   let currentCity = response.data.name;
   let description = response.data.weather[0].main;
+  let wind = response.data.wind.speed;
   let topIcon = response.data.weather[0].icon;
   let weather = document.querySelector(".description");
   let city = document.querySelector("h1");
   let currentTemp = document.querySelector("#currentTemperature");
+  let windSpeed = document.querySelector(".windSpeed");
   let iconElement = document.querySelector(".top-image");
 
   celsiusTemp = tempRounded;
@@ -71,6 +73,7 @@ function setWeather(response) {
   weather.innerHTML = `${description}`;
   currentTemp.innerHTML = `${celsiusTemp}`;
   city.innerHTML = `${currentCity}`;
+  windSpeed.innerHTML = `${wind} km/h`;
 }
 
 let celsiusTemp = null;
