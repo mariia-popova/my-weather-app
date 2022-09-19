@@ -1,11 +1,8 @@
-//let iconMap = {
-// "01d": "images/sun.svg",
-//"02d": ""
-
 let apiKey = "6932b3c494b1a744dfaf6ee7c867c8fe";
-let apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric";
-
-axios.get(`${apiUrl}&appid=${apiKey}&q=Kyiv`).then(setWeather);
+let apiUrlNow = "https://api.openweathermap.org/data/2.5/weather?units=metric";
+let apiUrlForecast =
+  "https://api.openweathermap.org/data/2.5/forecast?units=metric";
+axios.get(`${apiUrlNow}&appid=${apiKey}&q=Kyiv`).then(setWeather);
 
 let now = new Date();
 let hours = now.getHours();
@@ -27,7 +24,7 @@ nameDay.innerHTML = `${day} ${hours}:${minutes}`;
 
 function convertToFahrenheit() {
   let temperature = document.querySelector("#currentTemperature");
-  temperature.innerHTML = `+77`;
+  temperature.innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
   let fahrenheit = document.querySelector("#fahrenheit");
   fahrenheit.classList.add("celsFahrenActive");
   let celsius = document.querySelector("#celsius");
@@ -39,7 +36,7 @@ fahrenheit.addEventListener("click", convertToFahrenheit);
 
 function convertToCelsius() {
   let temperature = document.querySelector("#currentTemperature");
-  temperature.innerHTML = `+28`;
+  temperature.innerHTML = celsiusTemp;
   let fahrenheit = document.querySelector("#fahrenheit");
   fahrenheit.classList.remove("celsFahrenActive");
   let celsius = document.querySelector("#celsius");
@@ -52,11 +49,12 @@ celsius.addEventListener("click", convertToCelsius);
 function getWeatherByPosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  axios.get(`${apiUrl}&appid=${apiKey}&lat=${lat}&lon=${lon}`).then(setWeather);
+  axios
+    .get(`${apiUrlNow}&appid=${apiKey}&lat=${lat}&lon=${lon}`)
+    .then(setWeather);
 }
 
 function setWeather(response) {
-  console.log(response);
   let temperature = response.data.main.temp;
   let tempRounded = Math.round(temperature);
   let currentCity = response.data.name;
@@ -66,15 +64,21 @@ function setWeather(response) {
   let city = document.querySelector("h1");
   let currentTemp = document.querySelector("#currentTemperature");
   let iconElement = document.querySelector(".top-image");
+
+  celsiusTemp = tempRounded;
+
   iconElement.setAttribute("src", `images/${topIcon}.png`);
   weather.innerHTML = `${description}`;
-  currentTemp.innerHTML = `${tempRounded}`;
+  currentTemp.innerHTML = `${celsiusTemp}`;
   city.innerHTML = `${currentCity}`;
 }
+
+let celsiusTemp = null;
 
 function getCurrentWeather(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(getWeatherByPosition);
+  //navigator.geolocation.getCurrentPosition(getForecastByPosition);
 }
 
 let buttonCurrent = document.querySelector("#current-button");
@@ -84,9 +88,22 @@ function searchWeather(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#cityEnter");
 
-  axios.get(`${apiUrl}&appid=${apiKey}&q=${cityInput.value}`).then(setWeather);
+  axios
+    .get(`${apiUrlNow}&appid=${apiKey}&q=${cityInput.value}`)
+    .then(setWeather);
   cityInput.value = "";
 }
 
 let searchButton = document.querySelector("#search-button");
 searchButton.addEventListener("click", searchWeather);
+
+//function getForecastByPosition(position) {
+//let lat = position.coords.latitude;
+//let lon = position.coords.longitude;
+//axios
+//.get(`${apiUrlForecast}&appid=${apiKey}&lat=${lat}&lon=${lon}`)
+//.then(setForecast);
+//}
+//function setForecast(response) {
+//console.log(response);
+//}
