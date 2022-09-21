@@ -22,6 +22,27 @@ let day = days[now.getDay()];
 let nameDay = document.querySelector("#dayOfWeek");
 nameDay.innerHTML = `${day} ${hours}:${minutes}`;
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Wed", "Thu", "Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      ` 
+      <div class="col-2">
+        <div class="forecast-day">${day}</div>
+        <img class="forecast-image" src="images/01d.png" alt="sun" />
+        <div class="forecast-degrees">
+          <span class="weather-forecast-max">34º</span>/<span class="weather-forecast-min">19º</span>
+        </div>
+      </div>
+  `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function convertToFahrenheit() {
   let temperature = document.querySelector("#currentTemperature");
   temperature.innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
@@ -100,13 +121,4 @@ function searchWeather(event) {
 let searchButton = document.querySelector("#search-button");
 searchButton.addEventListener("click", searchWeather);
 
-//function getForecastByPosition(position) {
-//let lat = position.coords.latitude;
-//let lon = position.coords.longitude;
-//axios
-//.get(`${apiUrlForecast}&appid=${apiKey}&lat=${lat}&lon=${lon}`)
-//.then(setForecast);
-//}
-//function setForecast(response) {
-//console.log(response);
-//}
+displayForecast();
