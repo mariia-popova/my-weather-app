@@ -41,7 +41,7 @@ p,
   cursor: pointer;
   transition: 150ms ease-in-out;
 }
-button:hover {
+#current-button:hover {
   color: #fff;
   background-color: #eb8439;
   cursor: pointer;

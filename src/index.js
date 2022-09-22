@@ -22,7 +22,8 @@ let day = days[now.getDay()];
 let nameDay = document.querySelector("#dayOfWeek");
 nameDay.innerHTML = `${day} ${hours}:${minutes}`;
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response);
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   let days = ["Wed", "Thu", "Fri", "Sat", "Sun"];
@@ -74,6 +75,12 @@ function getWeatherByPosition(position) {
     .get(`${apiUrlNow}&appid=${apiKey}&lat=${lat}&lon=${lon}`)
     .then(setWeather);
 }
+function getForecast(coordinates) {
+  let apiKey = "1a6432c5ca7b6f9b0bee45c98d54ea71";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayForecast);
+}
 
 function setWeather(response) {
   let temperature = response.data.main.temp;
@@ -95,6 +102,8 @@ function setWeather(response) {
   currentTemp.innerHTML = `${celsiusTemp}`;
   city.innerHTML = `${currentCity}`;
   windSpeed.innerHTML = `${wind} km/h`;
+
+  getForecast(response.data.coord);
 }
 
 let celsiusTemp = null;
@@ -120,5 +129,3 @@ function searchWeather(event) {
 
 let searchButton = document.querySelector("#search-button");
 searchButton.addEventListener("click", searchWeather);
-
-displayForecast();
