@@ -93,7 +93,7 @@ function setWeather(response) {
   weather.innerHTML = `${description}`;
   currentTemp.innerHTML = `${celsiusTemp}`;
   city.innerHTML = `${currentCity}`;
-  windSpeed.innerHTML = `${wind} km/h`;
+  windSpeed.innerHTML = `${wind} m/h`;
 
   getForecast(response.data.coord);
 }
