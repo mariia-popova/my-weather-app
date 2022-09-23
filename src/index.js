@@ -60,30 +60,6 @@ function displayForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 
-function convertToFahrenheit() {
-  let temperature = document.querySelector("#currentTemperature");
-  temperature.innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
-  let fahrenheit = document.querySelector("#fahrenheit");
-  fahrenheit.classList.add("celsFahrenActive");
-  let celsius = document.querySelector("#celsius");
-  celsius.classList.remove("celsFahrenActive");
-}
-
-let fahrenheit = document.querySelector("#fahrenheit");
-fahrenheit.addEventListener("click", convertToFahrenheit);
-
-function convertToCelsius() {
-  let temperature = document.querySelector("#currentTemperature");
-  temperature.innerHTML = celsiusTemp;
-  let fahrenheit = document.querySelector("#fahrenheit");
-  fahrenheit.classList.remove("celsFahrenActive");
-  let celsius = document.querySelector("#celsius");
-  celsius.classList.add("celsFahrenActive");
-}
-
-let celsius = document.querySelector("#celsius");
-celsius.addEventListener("click", convertToCelsius);
-
 function getWeatherByPosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;

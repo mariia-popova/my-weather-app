@@ -50,18 +50,7 @@ p,
 .units {
   font-weight: 300;
 }
-.celsFahren {
-  text-decoration: none;
-  color: #fff;
-}
-.celsFahren:hover {
-  color: #eb8439;
-  cursor: pointer;
-  transition: 150ms ease-in-out;
-}
-.celsFahrenActive {
-  color: #eb8439;
-}
+
 .enter-city,
 .button-search {
   border: none;
@@ -94,11 +83,10 @@ p,
 .forecast-day,
 .forecast-degrees {
   text-align: center;
-  padding: 0 20px;
 }
 .forecast-image {
   display: block;
-  margin: 0 0 0 15px;
+  margin: 0 auto;
   width: 50px;
   height: 50px;
 }
