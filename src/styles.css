@@ -108,3 +108,16 @@ p,
   color: #eb8439;
   cursor: pointer;
 }
+
+@media (max-width: 375px) {
+  #cityEnter {
+    width: 130px;
+  }
+  .forecast-degrees {
+    font-size: 13px;
+  }
+  .top-image {
+    width: 100px;
+    height: 100px;
+  }
+}
